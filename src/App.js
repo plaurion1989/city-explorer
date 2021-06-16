@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import './App.css';
+import css from './App.css';
 import MyForm from './MyForm.js';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+
 
 
 class App extends React.Component {
@@ -25,13 +26,27 @@ class App extends React.Component {
     })
   }
   render() {
+    const styling = {
+      color: "white",
+      backgroundColor: "LightGreen",
+      padding: "15px",
+      fontFamily: "Arial",
+    }
+    const h1Style = {
+      textAlign: "center",
+    }
+    const jumboStyle = {
+      backgroundColor: "dodgerblue",
+    }
     return (
       <>
-        <h1>City Explorer</h1>
-        <h2>Netlify Testing</h2>
+        <div style={styling}>
+        <h1 style={h1Style}>City Explorer</h1>
         <MyForm getLocationData={this.getLocationData} />
-        <Jumbotron>{this.state.location.display_name?<><h3>{this.state.location.display_name}</h3>
+        
+        <Jumbotron style={jumboStyle}>{this.state.location.display_name?<><h3>{this.state.location.display_name}</h3><img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=12`} alt={this.state.location.display_name}/>
         <p>Latitude:{this.state.location.lat}, Longitude:{this.state.location.lon}</p></>:''}</Jumbotron>
+        </div>
       </>
     )
   }
