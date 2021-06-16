@@ -15,11 +15,11 @@ class MyForm extends React.Component {
             <Form.Label>Search Cities by Name</Form.Label>
             <Form.Control placeholder="Enter City Name" />
             <Form.Text className="text-muted">
-              Find your cheating husband ANYWHERE ON EARTH!
+              Find your city ANYWHERE ON EARTH!
             </Form.Text>
           </Form.Group>
           <Button variant="primary" type="submit">
-            FIND HIM!
+            Explore!
           </Button>
         </Form>
       </>
