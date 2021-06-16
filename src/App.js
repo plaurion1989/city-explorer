@@ -11,24 +11,31 @@ class App extends React.Component {
     super(props);
     this.state = {
       location: {},
+      errMessage:'',
     }
   }
   getLocationData = async (location) => {
 
     console.log(location);
+    try{
 
-    let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${location}&format=json`);
+      let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${location}&format=json`);
+      console.log(locationData);
+  
+      this.setState({
+        location: locationData.data[0]
+      })
+    }catch(err){
+        this.setState({
+          errMessage: `${err.message}`
+        })
+    }
 
-    console.log(locationData);
-
-    this.setState({
-      location: locationData.data[0]
-    })
   }
   render() {
     const styling = {
       color: "white",
-      backgroundColor: "LightGreen",
+      backgroundColor: "LimeGreen",
       padding: "15px",
       fontFamily: "Arial",
     }
@@ -43,8 +50,8 @@ class App extends React.Component {
         <div style={styling}>
         <h1 style={h1Style}>City Explorer</h1>
         <MyForm getLocationData={this.getLocationData} />
-        
-        <Jumbotron style={jumboStyle}>{this.state.location.display_name?<><h3>{this.state.location.display_name}</h3><img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=12`} alt={this.state.location.display_name}/>
+    
+        <Jumbotron style={jumboStyle}>{this.state.errMessage?<p>{this.state.errMessage}</p>: ''}{this.state.location.display_name?<><h3>{this.state.location.display_name}</h3><img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=12`} alt={this.state.location.display_name}/>
         <p>Latitude:{this.state.location.lat}, Longitude:{this.state.location.lon}</p></>:''}</Jumbotron>
         </div>
       </>
