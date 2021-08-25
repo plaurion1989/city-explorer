@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css'
 import MyForm from './MyForm.js';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 import Weather from './Weather.js';
 
 const server = `http://localhost:3002`;
@@ -50,15 +51,9 @@ class App extends React.Component {
     const h1Style = {
       textAlign: "center",
     }
-    const weatherStyle = {
-      backgroundColor: 'LimeGreen',
-      color: 'black',
-      textAlign: 'center',
-      width: '18rem',
-      marginBottom: '10px',
-    }
     const jumboStyle = {
       backgroundColor: "dodgerblue",
+      margin: 'auto'
     }
     return (
       <>
@@ -66,10 +61,14 @@ class App extends React.Component {
         <h1 style={h1Style}>City Explorer</h1>
         <MyForm getLocationData={this.getLocationData} />
     
-        <Jumbotron style={jumboStyle}>{this.state.errMessage?<p>{this.state.errMessage}</p>: ''}{this.state.location.display_name?<><h3>{this.state.location.display_name}</h3>
-        <Weather style={weatherStyle}/>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=17`} alt={this.state.location.display_name}/>
-        <p>Latitude:{this.state.location.lat}, Longitude:{this.state.location.lon}</p></>:''}</Jumbotron>
+        <Jumbotron style={jumboStyle}>{this.state.errMessage?<p>{this.state.errMessage}</p>: ''}{this.state.location.display_name?<>
+        <h3 style={{ textAlign: 'center'}}>{this.state.location.display_name}</h3>
+        <Container style={{width:'650px', margin:'auto'}}>
+        <Weather style={{marginBottom: '20px'}} weather={this.state.weatherData}/>
+        <img style={{marginTop: '20px'}} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=17`} alt={this.state.location.display_name}/>
+        <p>Latitude:{this.state.location.lat}, Longitude:{this.state.location.lon}</p>
+        </Container>
+        </>:''}</Jumbotron>
         </div>
       </>
     )
