@@ -14,6 +14,8 @@
 
 
 ## Lab-06
+### Web Request Response Cycle
+![](./img/lab06.png)
 ### Card 1
 Name of feature: Trello card 1
 
@@ -59,6 +61,7 @@ Finish time: 1730
 Actual time needed to complete: 60 min
 
 ## Lab-07
+### Web Request Response Cycle
 ![](./img/lab07.png)
 ### Card 1
 Name of feature: Trello card 1
@@ -94,6 +97,7 @@ Finish time: 2330
 Actual time needed to complete: 60 min
 
 ## Lab-08
+### Web Request Response Cycle
 ![](./img/lab08.png)
 ### Card 1
 Name of feature: Trello card 1
