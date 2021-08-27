@@ -131,3 +131,28 @@ Start time: 1600
 Finish time: 1700
 
 Actual time needed to complete: 60 min
+
+## Lab-09
+### Web Request Response Cycle
+![](./img/lab08.png)
+### Card 1
+Name of feature: Trello card 1
+
+Estimate of time needed to complete: 60 min
+
+Start time: 1530
+
+Finish time: 1645
+
+Actual time needed to complete: 75 min
+
+### Card 2
+Name of feature: Trello card 2
+
+Estimate of time needed to complete: 60 min
+
+Start time: 1700
+
+Finish time: 1830
+
+Actual time needed to complete: 90 min
